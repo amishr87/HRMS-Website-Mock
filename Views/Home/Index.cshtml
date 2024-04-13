@@ -1,0 +1,128 @@
+﻿@{
+    <!--
+    ViewData["Title"] = "Fill your Information";
+    -->
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #a62b4a;
+        margin: 0;
+        padding: 0;
+        /*background-image: url("https://media.licdn.com/dms/image/C4E0BAQEFWIazsNpfgA/company-logo_200_200/0/1594490063642?e=2147483647&v=beta&t=4Cv29mTlC70QbUqJBBPs0Qxe9pWhgMC0KdnSBNdzIgU");
+        background-repeat: repeat;*/
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .text-center {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #666;
+    }
+
+    .input-label {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .required {
+        color: red;
+        margin-left: 5px;
+        font-size: 16px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    button[type="submit"] {
+        background-color: /*#4CAF50*/ #a62b4a;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    .alert {
+        padding: 10px;
+        margin-bottom: 20px;
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        border-radius: 4px;
+    }
+</style>
+<!--
+<img src="https://media.licdn.com/dms/image/C4E0BAQEFWIazsNpfgA/company-logo_200_200/0/1594490063642?e=2147483647&v=beta&t=4Cv29mTlC70QbUqJBBPs0Qxe9pWhgMC0KdnSBNdzIgU" alt="A beautiful image">
+-->
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-5">Employee Registration</h1>
+        <!--
+        <p>Learn more about me by paying a visit to my <a href="https://www.linkedin.com/in/anand-krishna-mishra">LinkedIn page</a>.</p>
+        -->
+    </div>
+
+    <h2>@ViewData["Title"]</h2>
+    <p>Fields marked with an asterisk (<span class="required input-label">*</span> ) are required</p>
+
+    <form method="post" asp-action="SubmitForm">
+        <div class="form-group">
+            <label for="txtName">Name:<span class="required input-label">*</span></label>
+            <input type="text" id="txtName" name="name" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="txtEmail">Email:<span class="required input-label">*</span></label>
+            <input type="email" id="txtEmail" name="email" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="ddlGender">Gender:<span class="required input-label">*</span></label>
+
+            <select id="ddlGender" name="gender" class="form-control" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Prefer not to say</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="txtDOB">Date of Birth:<span class="required input-label">*</span></label>
+            <input type="date" id="txtDOB" name="dob" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="txtMessage">Comments:</label>
+            <textarea id="txtMessage" name="message" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+    }
+</div>

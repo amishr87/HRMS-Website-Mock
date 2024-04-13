@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Leave Request Form</title>
+    <link rel="stylesheet" href="leave-request.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #a62b4a;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .input-label {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .required {
+            color: red;
+            margin-left: 5px;
+            font-size: 16px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+            input[type="submit"] {
+                background-color: /*#4CAF50*/ #a62b4a;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
+
+                input[type="submit"]:hover {
+                    background-color: #45a049;
+                }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Leave Request Form</h1>
+        <p>Fields marked with an asterisk (<span class="required input-label">*</span> ) are required</p>
+        <form asp-action="SubmitLeaveRequest" method="post">
+            <div class="form-group">
+                <label for="employee-name">Employee Name:<span class="required input-label">*</span></label>
+                <input type="text" id="employee-name" name="employee-name" required>
+            </div>
+            <div class="form-group">
+                <label for="leave-type">Leave Type:<span class="required input-label">*</span></label>
+                <select id="leave-type" name="leave-type" required>
+                    <option value="">Select Leave Type</option>
+                    <option value="vacation">Vacation</option>
+                    <option value="sick">Sick Leave</option>
+                    <option value="personal">Personal Leave</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="start-date">Start Date:<span class="required input-label">*</span></label>
+                <input type="date" id="start-date" name="start-date" required>
+            </div>
+            <div class="form-group">
+                <label for="end-date">End Date:<span class="required input-label">*</span></label>
+                <input type="date" id="end-date" name="end-date" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">Reason:<span class="required input-label">*</span></label>
+                <textarea id="reason" name="reason" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</body>
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}
+</html>
